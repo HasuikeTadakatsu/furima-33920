@@ -6,7 +6,7 @@
 |--------------------------------|---------------------|----------------------------|
 | nickname(ニックネーム)           | string              | null: false                |
 | email(メールアドレス)            | string              | null: false,unique: true   |
-| password(パスワード)            | string              | null: false,unique: true   |
+| encrypted_password(パスワード)  | string              | null: false,unique: true   |
 | last_name(お名前(全角)苗字))     | string              | null: false                |
 | first_name(お名前(全角)名前))    | string              | null: false                |
 | last_name_kana(お名前(全角)苗字) | string              | null: false                |
@@ -17,7 +17,7 @@
 
 * has_many   :items
 * has_many   :comments
-* has_one    :purchase_histories
+* has_many   :purchase_histories
 
 ## items table（商品情報） ※(出品画像(exhibition_image)はActiveStorageで実装予定の為、記載しない)
 
@@ -54,12 +54,12 @@
 
 | Column                         | Type                | Options                                   |
 |--------------------------------|---------------------|-------------------------------------------|
-| postal_code(郵便番号)           | string              | null: false                               |
-| prefectures_id(都道府県)        | string              | null: false ,foreign_key: true            |
-| municipality(市区町村)          | string              | null: false                               |
-| address(番地)                  | string              | null: false                               |
-| building_name(建物名)           | string              |                                           |
-| phone_number(電話番号)           | string              | null:false                               |
+| postal_code(郵便番号)           | string              | null: false                                |
+| prefectures_id(都道府県)        | integer              | null: false ,foreign_key: true            |
+| municipality(市区町村)          | string              | null: false ,foreign_key: true             |
+| address(番地)                  | string              | null: false ,foreign_key: true             |
+| building_name(建物名)           | string              | foreign_key: true                         |
+| phone_number(電話番号)           | string              | null:false ,foreign_key: true            |
 
 ### Association
 
