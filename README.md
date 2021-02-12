@@ -17,7 +17,7 @@
 
 * has_many   :items
 * has_many   :comments
-* has_many   :purchase_history
+* has_many   :purchase_histories
 * has_one    :address
 
 ## items table（商品情報） ※(出品画像(exhibition_image)はActiveStorageで実装予定の為、記載しない)
@@ -26,20 +26,20 @@
 |-----------------------------------|---------------------|----------------------------|
 | product_name(商品名)               | string              | null: false                |
 | product_description(商品の説明)     | text                | null: false                |
-| product_category_id(カテゴリー)     | string              | null: false                |
-| product_status_id(商品の状態)       | string              | null: false                |
+| product_category_id(カテゴリー)     | integer             | null: false                |
+| product_status_id(商品の状態)       | integer             | null: false                |
 | shipping_fee_burden_id(配送料の負担)| integer             | null: false                |
-| shipping_area_id(発送元の地域)      | string              | null: false                |
-| days_to_ship_id(発送までの日数)     | string              | null: false                |
+| shipping_area_id(発送元の地域)      | integer             | null: false                |
+| days_to_ship_id(発送までの日数)     | integer             | null: false                |
 | selling_price(販売価格)            | integer             | null: false                |
 
 ### Association
 
 * has_many    :comments
-* has_many    :purchase_history
+* has_many    :purchase_histories
 * belongs_to  :user
 
-## purchase history table（購入履歴） 
+## purchase_history table（購入履歴） 
 
 | Column                          | Type                  | Options                       |
 |---------------------------------|-----------------------|-------------------------------|
@@ -49,13 +49,13 @@
 ### Association
 
 * belongs_to  :item
-* belongs_to  :user
+* belongs_to  :purchase_history
 
 ## addresses table（住所(発送先)） 
 
 | Column                         | Type                | Options                    |
 |--------------------------------|---------------------|----------------------------|
-| postal_code(郵便番号)           | integer             | null: false                |
+| postal_code(郵便番号)           | string             | null: false                |
 | prefectures_id(都道府県)        | string              | null: false                |
 | municipality(市区町村)          | string              | null: false                |
 | address(番地)                  | string              | null: false                |
@@ -64,7 +64,7 @@
 
 ### Association
 
-* belongs_to  :user
+* has_one :purchase_history
 
 ##  comments table(コメント)※追加実装予定
 
