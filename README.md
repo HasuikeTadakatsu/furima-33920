@@ -31,7 +31,7 @@
 | prefectures_id(発送元の地域)        | integer             | null: false,foreign_key: true  |
 | days_to_ship_id(発送までの日数)     | integer             | null: false,foreign_key: true  |
 | selling_price(販売価格)            | integer             | null: false,foreign_key: true  |
-| user(ユーザー)                     | references          | null: false,foreign_key: true  |
+| user(users table id参照)           | references          | null: false,foreign_key: true  |
 
 ### Association
 
@@ -39,12 +39,12 @@
 * has_one    :purchase_histories
 * belongs_to :user
 
-## purchase_history table（購入履歴） 
+## purchase_histories table（購入履歴） 
 
 | Column                          | Type                  | Options                       |
 |---------------------------------|-----------------------|-------------------------------|
-| item(アイテム)                   | references            | null: false,foreign_key: true |
-| user(ユーザー)                   | references            | null: false,foreign_key: true |
+| item(item table id参照)          | references            | null: false,foreign_key: true |
+| user(users table id参照)         | references            | null: false,foreign_key: true |
 
 ### Association
 
@@ -54,15 +54,15 @@
 
 ## addresses table（住所(発送先)） 
 
-| Column                            | Type                | Options                                   |
-|-----------------------------------|---------------------|-------------------------------------------|
-| postal_code(郵便番号)              | string             | null: false                                |
-| prefectures_id(都道府県)           | integer             | null: false ,foreign_key: true            |
-| municipality(市区町村)             | string              | null: false ,foreign_key: true            |
-| address(番地)                     | string             | null: false ,foreign_key: true             |
-| building_name(建物名)              | string             | foreign_key: true                          |
-| phone_number(電話番号)              | string            | null:false ,foreign_key: true              |
-| purchase_history(プレシャスヒストリー)| references        | null: false,foreign_key: true              |
+| Column                            | Type                    | Options                               |
+|-----------------------------------|-------------------------|---------------------------------------|
+| postal_code(郵便番号)              | string                  | null: false                           |
+| prefectures_id(都道府県)           | integer                 | null: false ,foreign_key: true        |
+| municipality(市区町村)             | string                  | null: false ,foreign_key: true        |
+| address(番地)                     | string                  | null: false ,foreign_key: true        |
+| building_name(建物名)              | string                 | foreign_key: true                      |
+| phone_number(電話番号)             | string                  | null:false ,foreign_key: true         |
+| purchase_history(purchase_history table id参照)| references | null: false,foreign_key: true         |
 
 ### Association
 
@@ -73,8 +73,8 @@
 | Column                         | Type                | Options                       |
 |--------------------------------|---------------------|-------------------------------|
 | comment(コメント)                | text                | null: false                   |
-| item(アイテム)                   | references          | null: false,foreign_key: true |
-| user(ユーザー)                   | references          | null: false,foreign_key: true |
+| item(item table id参照)         | references          | null: false,foreign_key: true |
+| user(users table id参照)        | references          | null: false,foreign_key: true |
 
 ### Association
 
