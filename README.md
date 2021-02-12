@@ -30,12 +30,14 @@
 | shipping_fee_burden_id(配送料の負担)| integer             | null: false,foreign_key: true  |
 | prefectures_id(発送元の地域)        | integer             | null: false,foreign_key: true  |
 | days_to_ship_id(発送までの日数)     | integer             | null: false,foreign_key: true  |
-| selling_price(販売価格)            | integer             | null: false                    |
+| selling_price(販売価格)            | integer             | null: false,foreign_key: true  |
+| user(ユーザー)                     | references          | null: false,foreign_key: true  |
 
 ### Association
 
 * has_many   :comments
 * has_one    :purchase_histories
+* belongs_to :user
 
 ## purchase_history table（購入履歴） 
 
@@ -46,20 +48,21 @@
 
 ### Association
 
-* belongs_to  :item
-* belongs_to  :user
-* has_one     :address
+* has_one    :address
+* belongs_to :item
+* belongs_to :user
 
 ## addresses table（住所(発送先)） 
 
-| Column                         | Type                | Options                                   |
-|--------------------------------|---------------------|-------------------------------------------|
-| postal_code(郵便番号)           | string              | null: false                                |
-| prefectures_id(都道府県)        | integer              | null: false ,foreign_key: true            |
-| municipality(市区町村)          | string              | null: false ,foreign_key: true             |
-| address(番地)                  | string              | null: false ,foreign_key: true             |
-| building_name(建物名)           | string              | foreign_key: true                         |
-| phone_number(電話番号)           | string              | null:false ,foreign_key: true            |
+| Column                            | Type                | Options                                   |
+|-----------------------------------|---------------------|-------------------------------------------|
+| postal_code(郵便番号)              | string             | null: false                                |
+| prefectures_id(都道府県)           | integer             | null: false ,foreign_key: true            |
+| municipality(市区町村)             | string              | null: false ,foreign_key: true            |
+| address(番地)                     | string             | null: false ,foreign_key: true             |
+| building_name(建物名)              | string             | foreign_key: true                          |
+| phone_number(電話番号)              | string            | null:false ,foreign_key: true              |
+| purchase_history(プレシャスヒストリー)| references        | null: false,foreign_key: true              |
 
 ### Association
 
