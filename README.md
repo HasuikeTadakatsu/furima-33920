@@ -5,7 +5,7 @@
 | Column                         | Type                | Options                    |
 |--------------------------------|---------------------|----------------------------|
 | nickname(ニックネーム)           | string              | null: false                |
-| email(メールアドレス)            | string              | null: false                |
+| email(メールアドレス)            | string              | null: false,unique: true   |
 | encrypted_password(パスワード)  | string              | null: false                |
 | last_name(お名前(全角)苗字))     | string              | null: false                |
 | first_name(お名前(全角)名前))    | string              | null: false                |
