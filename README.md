@@ -57,7 +57,7 @@
 | Column                            | Type                    | Options                               |
 |-----------------------------------|-------------------------|---------------------------------------|
 | postal_code(郵便番号)              | string                  | null: false                           |
-| prefectures_id(都道府県)           | integer                 | null: false ,foreign_key: true        |
+| prefectures_id(都道府県)           | integer                 | null: false                           |
 | municipality(市区町村)             | string                  | null: false                           |
 | address(番地)                     | string                  | null: false                           |
 | building_name(建物名)              | string                 |                                       |
