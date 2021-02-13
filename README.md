@@ -5,8 +5,8 @@
 | Column                         | Type                | Options                    |
 |--------------------------------|---------------------|----------------------------|
 | nickname(ニックネーム)           | string              | null: false                |
-| email(メールアドレス)            | string              | null: false,unique: true   |
-| encrypted_password(パスワード)  | string              | null: false,unique: true   |
+| email(メールアドレス)            | string              | null: false                |
+| encrypted_password(パスワード)  | string              | null: false                |
 | last_name(お名前(全角)苗字))     | string              | null: false                |
 | first_name(お名前(全角)名前))    | string              | null: false                |
 | last_name_kana(お名前(全角)苗字) | string              | null: false                |
@@ -23,20 +23,20 @@
 
 | Column                            | Type                | Options                         |
 |-----------------------------------|---------------------|---------------------------------|
-| product_name(商品名)               | string              | null: false                     |
-| product_description(商品の説明)     | text                | null: false                    |
-| product_category_id(カテゴリー)     | integer             | null: false,foreign_key: true  |
-| product_status_id(商品の状態)       | integer             | null: false,foreign_key: true  |
-| shipping_fee_burden_id(配送料の負担)| integer             | null: false,foreign_key: true  |
-| prefectures_id(発送元の地域)        | integer             | null: false,foreign_key: true  |
-| days_to_ship_id(発送までの日数)     | integer             | null: false,foreign_key: true  |
-| selling_price(販売価格)            | integer             | null: false,foreign_key: true  |
+| name(商品名)                       | string              | null: false                     |
+| description(商品の説明)             | text                | null: false                    |
+| category_id(カテゴリー)             | integer             | null: false                    |
+| status_id(商品の状態)               | integer             | null: false                    |
+| shipping_fee_burden_id(配送料の負担)| integer             | null: false                    |
+| prefectures_id(発送元の地域)        | integer             | null: false                    |
+| days_to_ship_id(発送までの日数)     | integer             | null: false                    |
+| selling_price(販売価格)            | integer             | null: false                    |
 | user(users table id参照)           | references          | null: false,foreign_key: true  |
 
 ### Association
 
 * has_many   :comments
-* has_one    :purchase_histories
+* has_one    :purchase_history
 * belongs_to :user
 
 ## purchase_histories table（購入履歴） 
@@ -58,10 +58,10 @@
 |-----------------------------------|-------------------------|---------------------------------------|
 | postal_code(郵便番号)              | string                  | null: false                           |
 | prefectures_id(都道府県)           | integer                 | null: false ,foreign_key: true        |
-| municipality(市区町村)             | string                  | null: false ,foreign_key: true        |
-| address(番地)                     | string                  | null: false ,foreign_key: true        |
-| building_name(建物名)              | string                 | foreign_key: true                      |
-| phone_number(電話番号)             | string                  | null:false ,foreign_key: true         |
+| municipality(市区町村)             | string                  | null: false                           |
+| address(番地)                     | string                  | null: false                           |
+| building_name(建物名)              | string                 |                                       |
+| phone_number(電話番号)             | string                  | null:false                            |
 | purchase_history(purchase_history table id参照)| references | null: false,foreign_key: true         |
 
 ### Association
