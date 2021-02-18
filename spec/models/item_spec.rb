@@ -10,8 +10,8 @@ describe Item, type: :model do
     context '商品出品がうまくいくとき' do
       it '全ての項目が入力されていれば出品ができる' do
         expect(@item).to be_valid
-      end
-    
+
+    end
     context '商品出品がうまくいかないとき' do
       it 'imageが空では登録されない' do
         @item.image = nil
@@ -77,19 +77,31 @@ describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Selling price is invalid", "Selling price is not a number")
       end
 
-      it 'selling_priceが半角数字以外では登録できない' do
+      it 'selling_priceが全角文字では登録できない' do
         @item.selling_price = "１０００"
         @item.valid?
         expect(@item.errors.full_messages).to include("Selling price is not a number")
       end
 
+      it 'selling_priceが半角英数混合では登録できない' do
+        @item.selling_price = "a100"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Selling price is not a number")
+      end
+
+      it 'selling_priceが半角英語では登録できない' do
+        @item.selling_price = "abcd"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Selling price is not a number")
+      end
+
       it 'selling_priceが300より少ないと登録できない' do
-        @item.selling_price = "50"
+        @item.selling_price = 50
         @item.valid?
         expect(@item.errors.full_messages).to include("Selling price must be greater than 299")
       end
 
-      it 'priceが9999999より多いと登録できない' do
+      it 'selling_priceが9999999より多いと登録できない' do
         @item.selling_price = "10000000"
         @item.valid?
         expect(@item.errors.full_messages).to include("Selling price must be less than 10000000")
