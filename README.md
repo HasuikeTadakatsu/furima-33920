@@ -49,7 +49,7 @@
 | address(番地)                     | string                  | null: false                           |
 | building_name(建物名)              | string                 |                                       |
 | phone_number(電話番号)             | string                  | null:false                            |
-| purchase_history(purchase_history table id参照)| references | null: false,foreign_key: true         |
+| order(order tabl id参照)           | references             | null: false,foreign_key: true         |
 
 ### Association
 

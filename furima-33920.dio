@@ -1,4 +1,4 @@
-<mxfile host="65bd71144e" modified="2021-02-20T04:32:53.354Z" agent="5.0 (Macintosh; Intel Mac OS X 11_2_1) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.53.2 Chrome/87.0.4280.141 Electron/11.2.1 Safari/537.36" etag="vepSMBk9z0pc6t_zR9hW" version="14.2.4" type="embed">
+<mxfile host="65bd71144e" modified="2021-02-20T05:19:15.801Z" agent="5.0 (Macintosh; Intel Mac OS X 11_2_1) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.53.2 Chrome/87.0.4280.141 Electron/11.2.1 Safari/537.36" etag="ogAEqoF1CkNU2DI_XVrK" version="14.2.4" type="embed">
     <diagram id="-jUfgriWO1rKX73whtXs" name="ページ1">
         <mxGraphModel dx="1632" dy="465" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#FFFFFF" math="0" shadow="0">
             <root>
@@ -25,7 +25,7 @@
                 <mxCell id="50" value="addresses" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;labelBackgroundColor=none;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#000000;" parent="1" vertex="1">
                     <mxGeometry x="-1030" y="420" width="170" height="140" as="geometry"/>
                 </mxCell>
-                <mxCell id="51" value="postal_code&#10;prefectures_id&#10;municipality&#10;address&#10;building_name&#10;phone_number&#10;purchase_history" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;fontColor=#030303;" parent="50" vertex="1">
+                <mxCell id="51" value="postal_code&#10;prefectures_id&#10;municipality&#10;address&#10;building_name&#10;phone_number&#10;order" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;fontColor=#030303;" parent="50" vertex="1">
                     <mxGeometry y="30" width="170" height="110" as="geometry"/>
                 </mxCell>
                 <mxCell id="52" value="users" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;labelBackgroundColor=none;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#000000;" parent="1" vertex="1">
