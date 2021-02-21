@@ -3,6 +3,7 @@ class ItemOrder
   attr_accessor :token, :postal_code, :prefecture_id, :municipality, :address, :building_name, :phone_number, :user_id, :item_id
 
   with_options presence: true do
+  validates :token
   validates :postal_code
   validates :prefecture_id
   validates :municipality
