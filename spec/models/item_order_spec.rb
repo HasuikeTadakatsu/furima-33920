@@ -6,6 +6,7 @@ RSpec.describe ItemOrder, type: :model do
       @user = FactoryBot.create(:user)
       @item = FactoryBot.create(:item)
       @item_order = FactoryBot.build(:item_order, user_id: @user.id , item_id: @item.id)
+      sleep(1)
     end
 
      context '購入ができる時' do
@@ -27,7 +28,7 @@ RSpec.describe ItemOrder, type: :model do
       it 'postal_codeが空だと購入ができない' do
         @item_order.postal_code = ""
         @item_order.valid?
-        expect(@item_order.errors.messages).to include({:postal_code => ["can't be blank", "can't be blank", "is invalid", "is the wrong length (should be 8 characters)"]})
+        expect(@item_order.errors.messages).to include({:postal_code => ["can't be blank", "can't be blank", "is invalid"]})
       end
       it 'postal_codeにハイフンがないと登録できない' do
         @item_order.postal_code = "12345678"
@@ -37,7 +38,7 @@ RSpec.describe ItemOrder, type: :model do
       it 'postal_codeが8桁でないと購入できない' do
         @item_order.postal_code = "123-458"
         @item_order.valid?
-        expect(@item_order.errors.full_messages).to include("Postal code is invalid", "Postal code is the wrong length (should be 8 characters)")
+        expect(@item_order.errors.full_messages).to include("Postal code is invalid")
       end
       it 'prefecture_idが空だと購入できない' do
         @item_order.prefecture_id = nil
@@ -67,17 +68,17 @@ RSpec.describe ItemOrder, type: :model do
       it 'phone_numberが英数字混合でなければ購入できない' do
         @item_order.phone_number = "aaa12345678"
         @item_order.valid?
-        expect(@item_order.errors.full_messages).to include("Phone number is not a number")
+        expect(@item_order.errors.full_messages).to include("Phone number is invalid")
       end
       it 'user_idが空だと購入できない' do
-        @item_order.user_id = nil
+        @item_order.user_id = ''
         @item_order.valid?
-        expect(@item_order.errors.full_messages).to include("User id is invalid")
+        expect(@item_order.errors.full_messages).to include("User can't be blank")
       end
       it 'item_idが空だと購入できない' do
-        @item_order.item.id = nil
+        @item_order.item_id = ''
         @item_order.valid?
-        expect(@item_order.errors.full_messages).to include("Item id is invalid")
+        expect(@item_order.errors.full_messages).to include("Item can't be blank")
       end
     end
   end

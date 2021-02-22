@@ -8,19 +8,13 @@ class ItemOrder
   validates :prefecture_id
   validates :municipality
   validates :address
-  validates :building_name
   validates :phone_number
   validates :user_id
   validates :item_id
 
-  format: { with: /\A\d{3}[-]\d{4}\z/ } 
-  validates :postal_code, length: { is: 8 } 
-
-  numericality: { other_than: 1 } 
-  validates :prefecture_id
-  
-  format: { with: /\A\d{11}\z/ }
-  validates :phone_number
+  validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/ } 
+  validates :prefecture_id, numericality: { other_than: 1 } 
+  validates :phone_number, format: { with: /\A\d{11}\z/ }
   end
 
   def save
