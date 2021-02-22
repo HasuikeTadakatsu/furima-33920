@@ -3,13 +3,19 @@ require 'rails_helper'
 RSpec.describe ItemOrder, type: :model do
   describe '購入者情報の保存' do
     before do
-      @item_order = FactoryBot.build(:item_order)
+      @user = FactoryBot.create(:user)
+      @item = FactoryBot.create(:item)
+      @item_order = FactoryBot.build(:item_order, user_id: @user.id , item_id: @item.id)
     end
 
+     context '購入ができる時' do
       it '全ての項目が入力されていれば購入ができる' do
         expect(@item_order).to be_valid
       end
-      it 'token(クレジットカード情報)が空だと購入ができない' do
+     end
+
+      context '購入ができない時'do
+       it 'token(クレジットカード情報)が空だと購入ができない' do
         @item_order.token = nil
         @item_order.valid?
         expect(@item_order.errors.full_messages).to include()
@@ -54,5 +60,16 @@ RSpec.describe ItemOrder, type: :model do
         @item_order.valid?
         expect(@item_order.errors.full_messages).to include("Phone number is invalid")
       end
+      it 'user_idが空だと購入できない' do
+        @item_order.user_id = nil
+        @item_order.valid?
+        expect(@item_order.errors.full_messages).to include("User id is invalid")
+      end
+      it 'item_idが空だと購入できない' do
+        @item_order.item.id = nil
+        @item_order.valid?
+        expect(@item_order.errors.full_messages).to include("Item id is invalid")
+      end
+    end
   end
 end

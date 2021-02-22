@@ -10,17 +10,16 @@ class ItemOrder
   validates :address
   validates :building_name
   validates :phone_number
-  end
+  validates :user_id
+  validates :item_id
 
-  with_options presence: true, format: { with: /\A\d{3}[-]\d{4}\z/ } do
+  format: { with: /\A\d{3}[-]\d{4}\z/ } 
   validates :postal_code, length: { is: 8 } 
-  end
 
-  with_options presence: true, numericality: { other_than: 1 } do
+  numericality: { other_than: 1 } 
   validates :prefecture_id
-  end
-
-  with_options presence: true, format: { with: /\A\d{11}\z/ } do
+  
+  format: { with: /\A\d{11}\z/ }
   validates :phone_number
   end
 
