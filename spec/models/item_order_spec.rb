@@ -14,6 +14,7 @@ RSpec.describe ItemOrder, type: :model do
       end
       it 'building_nameが空でも購入できる' do
         @item_order.building_name = ""
+        expect(@item_order).to be_valid
       end
      end
 
@@ -62,6 +63,11 @@ RSpec.describe ItemOrder, type: :model do
         @item_order.phone_number = "080123456789"
         @item_order.valid?
         expect(@item_order.errors.full_messages).to include("Phone number is invalid")
+      end
+      it 'phone_numberが英数字混合でなければ購入できない' do
+        @item_order.phone_number = "aaa12345678"
+        @item_order.valid?
+        expect(@item_order.errors.full_messages).to include("Phone number is not a number")
       end
       it 'user_idが空だと購入できない' do
         @item_order.user_id = nil
