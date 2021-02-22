@@ -12,6 +12,9 @@ RSpec.describe ItemOrder, type: :model do
       it '全ての項目が入力されていれば購入ができる' do
         expect(@item_order).to be_valid
       end
+      it 'building_nameが空でも購入できる' do
+        @item_order.building_name = ""
+      end
      end
 
       context '購入ができない時'do
@@ -50,7 +53,7 @@ RSpec.describe ItemOrder, type: :model do
         @item_order.valid?
         expect(@item_order.errors.full_messages).to include("Address can't be blank")
       end
-      it 'building_nameが空だと購入できない' do
+      it 'building_nameが空でも購入できる' do
         @item_order.building_name = ""
         @item_order.valid?
         expect(@item_order.errors.full_messages).to include("Building name can't be blank")
