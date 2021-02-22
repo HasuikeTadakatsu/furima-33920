@@ -16,7 +16,7 @@
 ### Association
 
 * has_many   :items
-* has_many   :comments
+* has_many   :orders
 * has_many   :purchase_histories
 
 ## items table（商品情報） ※(出品画像(exhibition_image)はActiveStorageで実装予定の為、記載しない)
@@ -35,22 +35,9 @@
 
 ### Association
 
-* has_many   :comments
 * has_one    :purchase_history
 * belongs_to :user
-
-## purchase_histories table（購入履歴） 
-
-| Column                          | Type                  | Options                       |
-|---------------------------------|-----------------------|-------------------------------|
-| item(item table id参照)          | references            | null: false,foreign_key: true |
-| user(users table id参照)         | references            | null: false,foreign_key: true |
-
-### Association
-
-* has_one    :address
-* belongs_to :item
-* belongs_to :user
+* has_one    :order
 
 ## addresses table（住所(発送先)） 
 
@@ -62,21 +49,22 @@
 | address(番地)                     | string                  | null: false                           |
 | building_name(建物名)              | string                 |                                       |
 | phone_number(電話番号)             | string                  | null:false                            |
-| purchase_history(purchase_history table id参照)| references | null: false,foreign_key: true         |
+| order(order table id参照)           | references             | null: false,foreign_key: true         |
 
 ### Association
 
 * belongs_to :purchase_history
+* belongs_to :order
 
-##  comments table(コメント)※追加実装予定
+##  orders(購入履歴) table
 
 | Column                         | Type                | Options                       |
 |--------------------------------|---------------------|-------------------------------|
-| comment(コメント)                | text                | null: false                   |
-| item(item table id参照)         | references          | null: false,foreign_key: true |
 | user(users table id参照)        | references          | null: false,foreign_key: true |
+| item(item table id参照)         | references          | null: false,foreign_key: true |
 
 ### Association
 
-* belongs_to  :item
 * belongs_to  :user
+* belongs_to  :item
+- has_one :address
