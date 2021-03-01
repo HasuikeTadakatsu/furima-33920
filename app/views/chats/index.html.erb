@@ -1,9 +1,12 @@
 <h1>チャットページ</h1>
 
-  <%= form_with url: @chat, method: :chat, local: true do |form| %>
+  <%= form_with url: @chat, method: :chat, id: "chat" do |form| %>
   <%= form.text_field :chat %>
-  <%= form.submit '投稿する' %>
+  <%= form.submit '投稿する' , id: "submit" %>
   <% end %>
+
+  <div id="list">
+</div>
 
 <% @chats.each do |chat| %>
   <div class="chat">

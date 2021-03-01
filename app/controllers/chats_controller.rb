@@ -5,7 +5,8 @@ class ChatsController < ApplicationController
   end
 
   def create
-    Chat.create(chat: params[:chat])
+    chat = Chat.create(chat: params[:chat])
+    render json:{ chat: chat }
   end
 
 end
