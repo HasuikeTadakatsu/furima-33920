@@ -1,0 +1,25 @@
+<h1>チャットページ</h1>
+
+  <%= form_with url: @chat, method: :chat, id: "chat" do |form| %>
+  <%= form.text_field :chat %>
+  <%= form.submit '投稿する' , id: "submit" %>
+  <% end %>
+
+<div>
+  <%=link_to 'トップページへ戻る', root_path %>
+</div>
+
+  <div id="list">
+</div>
+
+<% @chats.each do |chat| %>
+  <div class="chat">
+    <div class="chat-date">
+      投稿日時：<%= chat.created_at %>
+    </div>
+    <div class="chat-content">
+     <%= chat.chat %>
+    </div>
+  </div>
+ <% end %>
+ 

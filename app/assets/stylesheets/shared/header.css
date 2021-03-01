@@ -68,6 +68,12 @@
 
 .brand-list {
   text-decoration: none;
+  margin-right: 4vw;
+  color: #333333;
+}
+
+.chat-list {
+  text-decoration: none;
   color: #333333;
 }
 
