@@ -5,6 +5,10 @@
   <%= form.submit '投稿する' , id: "submit" %>
   <% end %>
 
+<div>
+  <%=link_to 'トップページへ戻る', root_path %>
+</div>
+
   <div id="list">
 </div>
 
@@ -17,8 +21,5 @@
      <%= chat.chat %>
     </div>
   </div>
- <% end %> 
-
-<div>
-  <%=link_to 'トップページへ戻る', root_path %>
-</div>
+ <% end %>
+ 
