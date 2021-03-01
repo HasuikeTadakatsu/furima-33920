@@ -13,7 +13,7 @@
     <ul class='lists-left'>
       <li><%= link_to 'カテゴリー', "#", class: "category-list" %></li>
       <li><%= link_to 'ブランド', "#", class: "brand-list" %></li>
-      <li><%= link_to 'チャット', "#", class: "chat-list" %></li>
+      <li><%= link_to 'チャット', chats_path, class: "chat-list" %></li>
     </ul>
     <ul class='lists-right'>
       <% if user_signed_in? %>
